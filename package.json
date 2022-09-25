@@ -7,6 +7,7 @@
   "repository": "https://github.com/Luis-Domenech/lfd-speaker",
   "scripts": {
     "prepare": "husky install",
+    "test": "cd lfd-speaker && yarn test",
     "deploy": "cd lfd-speaker && semantic-release"
   },
   "dependencies": {
