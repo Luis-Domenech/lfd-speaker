@@ -43,17 +43,22 @@ jobs:
         uses: microsoft/setup-msbuild@v1.1
         if: matrix.os == 'windows-latest'
 
-      - name: Set msvs_version
-        run: npm config set msvs_version 2022 --global
-        if: matrix.os == 'windows-latest'
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
 
       - name: Install Dependencies
+        run: cd lfd-speaker && npm config set msvs_version 2022 --global && npm install
+        if: matrix.os == 'windows-latest'
+
+      - name: Install Dependencies
         run: cd lfd-speaker && yarn install --frozen-lockfile
+        if: matrix.os == 'macos-latest'
+
+      - name: Install Dependencies
+        run: cd lfd-speaker && yarn install --frozen-lockfile
+        if: matrix.os == 'ubuntu-latest'
 
       - name: Run Tests 🧪
         run: yarn test
