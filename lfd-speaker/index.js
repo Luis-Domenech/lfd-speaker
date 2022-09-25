@@ -12,6 +12,8 @@ const { Writable } = require('stream')
 // determine the native host endianness, the only supported playback endianness
 const endianness = os.endianness()
 
+const NODE_MAJOR_VERSION = process.versions.node.split('.')[0]
+
 /**
  * The `Speaker` class accepts raw PCM data written to it, and then sends that data
  * to the default output device of the OS.
@@ -286,8 +288,11 @@ class Speaker extends Writable {
     }
 
     this._closed = true
-    // 'close' event is already emitted by Writable's internal logic
-    // this.emit('close')
+
+    // On Node v14 and upwards, the 'close' event is already emitted by Writable's internal logic
+    // so if using node v14 or higher, we should NOT emit event
+    // else, we should emit event in older NodeJS versions
+    if (NODE_MAJOR_VERSION < 14) this.emit('close')
   }
 
   /**
