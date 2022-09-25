@@ -256,7 +256,38 @@ class Speaker extends Writable {
   _flush () {
     debug('_flush()')
     this.emit('flush')
-    this.close(false)
+    this._close(false)
+  }
+
+  /**
+   * Calls .close() with the difference being that a close event is NOT emitted.
+   *
+   * @param {Boolean} flush - if `false`, then don't call the `flush()` native binding call. Defaults to `true`.
+   * @api private
+   */
+
+  _close (flush) {
+    debug('_close(%o)', flush)
+    if (this._closed) return debug('already closed...')
+
+    if (this.audio_handle) {
+      if (flush !== false) {
+        // TODO: async most likely…
+        debug('invoking flush() native binding')
+        binding.flush(this.audio_handle)
+      }
+
+      // TODO: async maybe?
+      debug('invoking close() native binding')
+      binding.close(this.audio_handle)
+      this.audio_handle = null
+    } else {
+      debug('not invoking flush() or close() bindings since no `audio_handle`')
+    }
+
+    this._closed = true
+    // 'close' event is already emitted by Writable's internal logic
+    // this.emit('close')
   }
 
   /**
