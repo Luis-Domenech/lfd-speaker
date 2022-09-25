@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Luis-Domenech/lfd-speaker/compare/v1.0.0...v1.0.1) (2022-09-25)
+
+
+### Bug Fixes
+
+* **package:** bindings dependency was removed and replaced with custom update version ([af9756f](https://github.com/Luis-Domenech/lfd-speaker/commit/af9756fd3d20ad929901473608f0d90dbe6958e2))
+
 # 1.0.0 (2022-09-25)
 
 
