@@ -14,7 +14,7 @@ jobs:
         os:
           - ubuntu-latest
           - macos-latest
-          - windows-latest
+          # - windows-latest
         node-version: 
           - 10.x
           - 12.x
@@ -39,9 +39,9 @@ jobs:
         run: sudo apt-get install -y libasound2-dev
         if: matrix.os == 'ubuntu-latest'
 
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
-        if: matrix.os == 'windows-latest'
+      # - name: Add msbuild to PATH
+      #   uses: microsoft/setup-msbuild@v1
+      #   if: matrix.os == 'windows-latest'
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
@@ -49,16 +49,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install Dependencies
-        run: set PATH="C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\":$PATH && set VCINSTALLDIR="C:\Program Files\Microsoft Visual Studio\2022\Enterprise\" && cd lfd-speaker && npm config set msvs_version 2022 --global && npm config set VCINSTALLDIR "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\" && npm install
-        if: matrix.os == 'windows-latest'
-
-      - name: Install Dependencies
         run: cd lfd-speaker && yarn install --frozen-lockfile
-        if: matrix.os == 'macos-latest'
-
-      - name: Install Dependencies
-        run: cd lfd-speaker && yarn install --frozen-lockfile
-        if: matrix.os == 'ubuntu-latest'
 
       - name: Run Tests 🧪
         run: yarn test
