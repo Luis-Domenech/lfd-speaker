@@ -21,7 +21,7 @@
     "debug": "^4.0.0"
   },
   "devDependencies": {
-    "@types/node": "^12.12.14",
+    "@types/node": "^18.7.20",
     "@commitlint/cli": "16.2.3",
     "@commitlint/config-conventional": "16.0.0",
     "@semantic-release/changelog": "^6.0.1",
