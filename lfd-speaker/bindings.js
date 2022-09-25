@@ -157,7 +157,12 @@ exports.getFileName = function getFileName (callingFile) {
 
   let fileName = stack[1].getFileName()
 
-  if (fileName.includes('file://')) fileName = fileURLToPath(fileName)
+  try {
+    if (fileName) {
+      if (fileName.includes('file://')) fileName = fileURLToPath(fileName)
+    }
+  }
+  catch(e) {}
 
   return fileName
 }
