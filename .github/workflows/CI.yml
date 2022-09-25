@@ -49,7 +49,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install Dependencies
-        run: cd lfd-speaker && npm config set msvs_version 2022 --global && npm install
+        run: set PATH="/c/Program Files/Microsoft Visual Studio/2022/Enterprise/MSBuild/Current/Bin/":$PATH && cd lfd-speaker && npm config set msvs_version 2022 --global && npm install
         if: matrix.os == 'windows-latest'
 
       - name: Install Dependencies
