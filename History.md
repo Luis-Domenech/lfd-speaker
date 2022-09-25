@@ -1,3 +1,4 @@
+This are the old changes before forking the repo and making my new changes
 
 0.3.0 / 2016-04-09
 ==================

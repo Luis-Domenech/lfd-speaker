@@ -8,6 +8,8 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
+    "prepare": "husky install",
+    "deploy": "semantic-release",
     "test": "standard && node-gyp rebuild --mpg123-backend=dummy && mocha --reporter spec",
     "fix": "standard --fix",
     "rebuild-v": "node-gyp rebuild --verbose",
@@ -20,8 +22,14 @@
   },
   "devDependencies": {
     "@types/node": "^12.12.14",
+    "@commitlint/cli": "16.2.3",
+    "@commitlint/config-conventional": "16.0.0",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "husky": "7.0.4",
     "mocha": "^6.2.2",
-    "standard": "^14.3.1"
+    "standard": "^14.3.1",
+    "semantic-release": "^18.0.1"
   },
   "engines": {
     "node": ">=8.6"
