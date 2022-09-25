@@ -8,7 +8,7 @@ on:
       - "*"
 jobs:
   Test:
-    name: Test LFD Speaker on ${{ matrix.os }} with NodeJS ${{ matrix.node-version }}
+    name: Test LFD Speaker on ${{ matrix.os }} with Node.js ${{ matrix.node-version }}
     strategy:
       matrix:
         os:
@@ -16,10 +16,10 @@ jobs:
           - macos-latest
           - windows-latest
         node-version: 
-          - 8.x, 
-          - 10.x, 
-          - 12.x, 
-          - 14.x, 
+          - 8.x
+          - 10.x
+          - 12.x
+          - 14.x
           - 16.x
 
     runs-on: ${{ matrix.os }}
