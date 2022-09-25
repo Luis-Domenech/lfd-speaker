@@ -5,8 +5,10 @@
 ## initially written by Nicholas J. Humfrey
 dist_man_MANS = man1/mpg123.1
 
-SUBDIRS = src doc
-DIST_SUBDIRS = src doc
+#SUBDIRS = src doc
+#DIST_SUBDIRS = src doc
+SUBDIRS = src
+DIST_SUBDIRS = src
 ACLOCAL_AMFLAGS = -I m4
 
 # pkg-config file for the mpg123 library

@@ -8,7 +8,7 @@ dnl Require autoconf version >= 2.57
 AC_PREREQ(2.57)
 
 
-dnl ############# Initialisation
+dnl ############# Initialization
 AC_INIT([mpg123], [1.14.4], [mpg123-devel@lists.sourceforge.net])
 dnl Increment API_VERSION when the API gets changes (new functions).
 API_VERSION=36
@@ -20,7 +20,7 @@ AC_SUBST(API_VERSION)
 
 AC_CONFIG_SRCDIR(src/mpg123.c)
 AC_CONFIG_AUX_DIR(build)
-AC_CONFIG_SRCDIR(doc)
+# AC_CONFIG_SRCDIR(doc)
 AC_CONFIG_MACRO_DIR([m4])
 AC_CANONICAL_HOST
 
@@ -2081,11 +2081,21 @@ if test "x$modules" = xenabled; then
   LIBS="-lltdl $LIBS"
 fi
 
+#AC_CONFIG_FILES([
+#	Makefile
+#	libmpg123.pc
+#	mpg123.spec
+#	doc/Makefile
+#	src/Makefile
+#	src/output/Makefile
+#	src/libmpg123/Makefile
+#	src/libmpg123/mpg123.h
+#])
+
 AC_CONFIG_FILES([
 	Makefile
 	libmpg123.pc
 	mpg123.spec
-	doc/Makefile
 	src/Makefile
 	src/output/Makefile
 	src/libmpg123/Makefile

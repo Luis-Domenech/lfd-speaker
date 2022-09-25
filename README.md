@@ -1,8 +1,8 @@
-# node-speaker
+# LFD Speaker
 
 ## Output [PCM audio][pcm] data to the speakers
 
-[![Build Status](https://github.com/TooTallNate/node-speaker/workflows/Node%20CI/badge.svg)](https://github.com/TooTallNate/node-speaker/actions?workflow=Node+CI)
+This is a fork of [node-speaker](https://github.com/TooTallNate/node-speaker). This fork just adds some changes to add support for M1 Macs by following instructions found [here](https://github.com/TooTallNate/node-speaker/issues/172).
 
 A Writable stream instance that accepts [PCM audio][pcm] data and outputs it
 to the speakers. The output is backed by `mpg123`'s audio output modules, which
@@ -11,10 +11,23 @@ these days.
 
 ## Installation
 
-Simply compile and install `node-speaker` using `npm`:
+Simply compile and install `lfd-speaker` using `npm`, `yarn` or `pnpm`:
 
 ```sh
-npm install speaker
+npm install lfd-speaker
+```
+
+or 
+
+```sh
+yarn add lfd-speaker
+```
+
+or
+
+
+```sh
+pnpm add lfd-speaker
 ```
 
 On Debian/Ubuntu, the [ALSA][alsa] backend is selected by default, so be sure
@@ -29,24 +42,40 @@ sudo apt-get install libasound2-dev
 Here's an example of piping `stdin` to the speaker, which should be 2 channel,
 16-bit audio at 44,100 samples per second (a.k.a CD quality audio).
 
+### Javascript
 ```javascript
-const Speaker = require('speaker');
+const Speaker = require('speaker')
 
 // Create the Speaker instance
 const speaker = new Speaker({
   channels: 2,          // 2 channels
   bitDepth: 16,         // 16-bit samples
   sampleRate: 44100     // 44,100 Hz sample rate
-});
+})
 
 // PCM data from stdin gets piped into the speaker
-process.stdin.pipe(speaker);
+process.stdin.pipe(speaker)
+```
+
+### Typescript
+```typescript
+import { Speaker } from 'lfd-speaker'
+
+// Create the Speaker instance
+const speaker = new Speaker({
+  channels: 2,          // 2 channels
+  bitDepth: 16,         // 16-bit samples
+  sampleRate: 44100     // 44,100 Hz sample rate
+})
+
+// PCM data from stdin gets piped into the speaker
+process.stdin.pipe(speaker)
 ```
 
 ## API
 
 `require('speaker')` directly returns the `Speaker` constructor. It is the only
-interface exported by `node-speaker`.
+interface exported by `lfd-speaker`.
 
 ### new Speaker([ options ]) -> Speaker instance
 
@@ -79,7 +108,7 @@ This speaker instance is essentially finished after this point.
 
 ## Audio Backend Selection
 
-`node-speaker` is backed by `mpg123`'s "output modules", which in turn use one of
+`lfd-speaker` is backed by `mpg123`'s "output modules", which in turn use one of
 many popular audio backends like ALSA, OSS, SDL, and lots more. The default
 backends for each operating system are described in the table below:
 
