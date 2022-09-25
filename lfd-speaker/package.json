@@ -4,7 +4,7 @@
   "license": "(MIT AND LGPL-2.1-only)",
   "description": "Output PCM audio data to the speakers",
   "author": "Luis Domenech <luisfabiandomenech@gmail.com> (https://luisfdomenech.com)",
-  "repository": "Luis-Domenech/node-speaker",
+  "repository": "https://github.com/Luis-Domenech/lfd-speaker",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
