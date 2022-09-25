@@ -1,6 +1,6 @@
 {
   "name": "lfd-speaker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "(MIT AND LGPL-2.1-only)",
   "description": "Output PCM audio data to the speakers",
   "author": "Luis Domenech <luisfabiandomenech@gmail.com> (https://luisfdomenech.com)",
